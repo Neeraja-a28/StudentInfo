@@ -1,0 +1,14 @@
+<h1>show details</h1>
+
+<h1><%= @student.name %></h1>
+
+<p><%= @student.marks %></p>
+<p><%= @student.college %></p>
+<p><%= @student.passed_out_year %></p>
+<p><%= @student.course.name %></p>
+
+
+<ul>
+  <%= link_to "Edit", edit_student_path(@student) %><br>
+  <%= link_to "Back", students_path %><br>
+</ul>

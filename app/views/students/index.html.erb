@@ -1,0 +1,42 @@
+<!-- app/views/students/index.html.erb -->
+<h1>Students</h1>
+<style>
+  
+  table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+</style>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Marks</th>
+      <th>College</th>
+      <th>Passed Out Year</th>
+      <th>Course</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.marks %></td>
+        <td><%= student.college %></td>
+        <td><%= format_passes_year(student.passed_out_year) %></td>
+        <td><%= student.course.name if student.course_id.present? %></td>
+        <td><%= student.status %></td>
+        <td><%= link_to "Show", student_path(student) %></td>
+        <td><%= link_to "Edit", edit_student_path(student) %></td>
+        <td><%= link_to "Destroy", student_path(student), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Student', new_student_path %>

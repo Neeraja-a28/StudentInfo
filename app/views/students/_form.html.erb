@@ -1,0 +1,45 @@
+<%= form_with model: @student do |form| %>
+  <div>
+    <%= form.label :Name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <br>
+  <div>
+    <%= form.label :Marks %><br>
+    <%= form.text_field :marks %>
+  </div>
+
+  <br>
+  <div>
+    <%= form.label :College %><br>
+    <%= form.text_field :college %>
+  </div>
+
+  <br>
+  <div>
+    <%= form.label :Passed_Out_Year %><br>
+    <%= form.text_field :passed_out_year %>
+  </div>
+
+  <br>
+
+  <div>
+    <%= form.label :Status %><br>
+    <%= form.text_field :status %>
+  </div>
+
+  <br>
+  
+  <div class="field">
+    <%= form.fields_for :course_attributes do |course_fields| %>
+      <%= course_fields.label :name, "Course Name" %><br>
+      <%= course_fields.select :name, options_for_select(["Digital market", "Arts", "Compute Science","Graphical designer"]) %>
+    <% end %>
+  </div>
+
+  <br>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
